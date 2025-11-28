@@ -1298,6 +1298,28 @@
                 storage.set(STORAGE_KEYS.PREMIUM, isPremium);
             }, [isPremium]);
             
+            // Handle successful payment redirect
+            useEffect(() => {
+                const params = new URLSearchParams(window.location.search);
+                if (params.get('success') === 'true') {
+                    const purchaseType = params.get('type');
+                    if (purchaseType === 'season') {
+                        // Season pass - set premium permanently
+                        setIsPremium(true);
+                        storage.set(STORAGE_KEYS.PREMIUM, true);
+                    } else if (purchaseType === 'single') {
+                        // Single use - grant temporary premium for this session
+                        setIsPremium(true);
+                        // Don't persist single use - it's one-time
+                    }
+                    // Clean up URL
+                    window.history.replaceState({}, '', window.location.pathname);
+                    alert(purchaseType === 'season' 
+                        ? '🎄 Welcome to Season Pass! Enjoy unlimited elf ideas all season!' 
+                        : '🎄 Thank you! Enjoy your premium elf ideas!');
+                }
+            }, []);
+            
             // Handlers
             const handleSaveProfile = (profile) => {
                 setProfiles(prev => {
@@ -1326,13 +1348,30 @@
                 });
             };
             
-            const handlePurchase = (type) => {
-                // This would integrate with Stripe
-                // For now, simulate purchase
-                alert(`This would open Stripe checkout for ${type === 'season' ? 'Season Pass ($16.99)' : 'Single Use ($3.99)'}`);
-                // After successful payment:
-                // setIsPremium(true);
-                setShowPricingModal(false);
+            const handlePurchase = async (type) => {
+                try {
+                    // Call our Netlify function to create a Stripe checkout session
+                    const response = await fetch('/api/create-checkout', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ priceType: type })
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error('Failed to create checkout session');
+                    }
+                    
+                    const { url } = await response.json();
+                    
+                    // Redirect to Stripe checkout
+                    window.location.href = url;
+                    
+                } catch (error) {
+                    console.error('Checkout error:', error);
+                    alert('Something went wrong. Please try again.');
+                }
             };
             
             const generateIdeas = async () => {
