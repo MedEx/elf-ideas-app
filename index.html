@@ -427,7 +427,24 @@
             header: {
                 padding: '20px 0',
                 borderBottom: '3px solid #1a3a2f',
-                background: 'white'
+                background: `
+                    linear-gradient(180deg, rgba(139, 90, 60, 0.08) 0%, rgba(255,255,255,0.95) 100%),
+                    repeating-linear-gradient(
+                        90deg,
+                        transparent 0px,
+                        transparent 48px,
+                        rgba(139, 90, 60, 0.03) 48px,
+                        rgba(139, 90, 60, 0.03) 50px
+                    ),
+                    repeating-linear-gradient(
+                        0deg,
+                        rgba(139, 90, 60, 0.04) 0px,
+                        rgba(139, 90, 60, 0.04) 2px,
+                        transparent 2px,
+                        transparent 24px
+                    )
+                `,
+                backgroundColor: '#faf6f0'
             },
             headerInner: {
                 display: 'flex',
