@@ -849,53 +849,70 @@
         
         // ============ COMPONENTS ============
         
-        // Christmas Lights Component - hangs from header border
+        // Christmas Lights Component - draped from header border
         const ChristmasLights = () => {
-            const lights = [];
-            const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#ff6b6b', '#95e1d3', '#f38181', '#4ecdc4', '#ffe66d', '#95e1d3', '#f38181', '#ff6b6b', '#4ecdc4', '#ffe66d', '#95e1d3', '#f38181'];
-            
-            for (let i = 0; i < 15; i++) {
-                const dropLength = 12 + (i % 3) * 8; // Varying drop lengths for natural look
-                lights.push(
-                    <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        {/* Wire drop from border */}
-                        <div style={{
-                            width: '2px',
-                            height: `${dropLength}px`,
-                            background: '#1a3a2f'
-                        }} />
-                        {/* Bulb socket */}
-                        <div style={{
-                            width: '6px',
-                            height: '5px',
-                            background: '#1a3a2f',
-                            borderRadius: '1px'
-                        }} />
-                        {/* Bulb */}
-                        <div style={{
-                            width: '12px',
-                            height: '18px',
-                            background: colors[i],
-                            borderRadius: '50% 50% 50% 50% / 30% 30% 70% 70%',
-                            boxShadow: `0 0 8px ${colors[i]}, 0 0 12px ${colors[i]}40`,
-                            animation: `twinkle ${1.5 + (i % 3) * 0.5}s ease-in-out infinite`,
-                            animationDelay: `${i * 0.15}s`
-                        }} />
-                    </div>
-                );
-            }
+            const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#f38181', '#95e1d3', '#ff6b6b', '#ffe66d', '#4ecdc4', '#f38181', '#95e1d3', '#ffe66d', '#ff6b6b', '#4ecdc4'];
             
             return (
                 <div style={{
                     width: '100%',
-                    display: 'flex',
-                    justifyContent: 'space-around',
-                    alignItems: 'flex-start',
-                    padding: '0 40px',
-                    marginTop: '-1px', // Connects to border
-                    height: '50px'
+                    position: 'relative',
+                    height: '40px',
+                    marginTop: '-2px',
+                    overflow: 'hidden'
                 }}>
-                    {lights}
+                    {/* Draped wire */}
+                    <svg 
+                        style={{ 
+                            width: '100%', 
+                            height: '40px',
+                            position: 'absolute',
+                            top: '0',
+                            left: '0'
+                        }} 
+                        preserveAspectRatio="none"
+                        viewBox="0 0 1200 40"
+                    >
+                        <path 
+                            d="M0,0 Q46,25 92,0 Q138,25 184,0 Q230,25 276,0 Q322,25 368,0 Q414,25 460,0 Q506,25 552,0 Q598,25 644,0 Q690,25 736,0 Q782,25 828,0 Q874,25 920,0 Q966,25 1012,0 Q1058,25 1104,0 Q1150,25 1200,0" 
+                            stroke="#1a3a2f" 
+                            strokeWidth="2" 
+                            fill="none"
+                        />
+                    </svg>
+                    {/* Bulbs at the bottom of each drape */}
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-around',
+                        alignItems: 'flex-start',
+                        padding: '0 46px',
+                        position: 'absolute',
+                        width: '100%',
+                        top: '18px',
+                        boxSizing: 'border-box'
+                    }}>
+                        {colors.map((color, i) => (
+                            <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                {/* Bulb socket */}
+                                <div style={{
+                                    width: '5px',
+                                    height: '4px',
+                                    background: '#1a3a2f',
+                                    borderRadius: '1px'
+                                }} />
+                                {/* Bulb */}
+                                <div style={{
+                                    width: '11px',
+                                    height: '16px',
+                                    background: color,
+                                    borderRadius: '50% 50% 50% 50% / 30% 30% 70% 70%',
+                                    boxShadow: `0 0 6px ${color}, 0 0 10px ${color}40`,
+                                    animation: `twinkle ${1.5 + (i % 3) * 0.5}s ease-in-out infinite`,
+                                    animationDelay: `${i * 0.15}s`
+                                }} />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             );
         };
