@@ -6,6 +6,32 @@
     <title>Elf Ideas AI | Creative Elf on the Shelf Ideas for Busy Parents</title>
     <meta name="description" content="AI-powered Elf on the Shelf idea generator. Get personalized, creative ideas based on your kids' ages and interests. Never run out of elf inspiration again.">
     
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="elf on the shelf ideas, elf ideas, christmas elf, elf positions, elf scenes, holiday traditions, parenting tips, christmas activities for kids">
+    <meta name="author" content="Elf Ideas AI">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://elfontheshelfideas.ai">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://elfontheshelfideas.ai">
+    <meta property="og:title" content="Elf Ideas AI | Never Run Out of Elf on the Shelf Ideas">
+    <meta property="og:description" content="AI-powered Elf on the Shelf idea generator. Get personalized, creative ideas based on your kids' ages and interests.">
+    <meta property="og:image" content="https://elfontheshelfideas.ai/og-image.png">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://elfontheshelfideas.ai">
+    <meta name="twitter:title" content="Elf Ideas AI | Never Run Out of Elf on the Shelf Ideas">
+    <meta name="twitter:description" content="AI-powered Elf on the Shelf idea generator. Get personalized, creative ideas based on your kids' ages and interests.">
+    <meta name="twitter:image" content="https://elfontheshelfideas.ai/og-image.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
+    <meta name="theme-color" content="#1a3a2f">
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -118,6 +144,71 @@
         .delay-3 { animation-delay: 0.3s; opacity: 0; }
         .delay-4 { animation-delay: 0.4s; opacity: 0; }
         .delay-5 { animation-delay: 0.5s; opacity: 0; }
+        
+        /* Improved Loading Animation */
+        @keyframes elfBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(-5deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-10px) rotate(5deg); }
+        }
+        
+        @keyframes snow {
+            0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100px) rotate(360deg); opacity: 0; }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+        
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem !important;
+            }
+            .hero-subtitle {
+                font-size: 1rem !important;
+            }
+            .nav-button-text {
+                display: none;
+            }
+            .generator-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .idea-card {
+                padding: 20px !important;
+            }
+            .modal-content {
+                padding: 24px !important;
+                margin: 10px;
+            }
+            .btn-primary {
+                padding: 14px 24px !important;
+                font-size: 1rem !important;
+            }
+            .header-inner {
+                padding: 0 16px !important;
+            }
+            .section-padding {
+                padding: 40px 16px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.75rem !important;
+            }
+            .elf-scene {
+                transform: scale(0.8);
+            }
+        }
     </style>
 </head>
 <body>
@@ -261,7 +352,166 @@
                     <path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/>
                     <path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/>
                 </svg>
+            ),
+            Share: () => (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="18" cy="5" r="3"/>
+                    <circle cx="6" cy="12" r="3"/>
+                    <circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+            ),
+            Facebook: () => (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                </svg>
+            ),
+            Twitter: () => (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            ),
+            Pinterest: () => (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0a12 12 0 00-4.373 23.178c-.07-.937-.134-2.377.028-3.401.146-.926.944-4.007.944-4.007s-.241-.482-.241-1.193c0-1.118.648-1.953 1.455-1.953.687 0 1.018.515 1.018 1.133 0 .69-.44 1.722-.667 2.679-.19.803.402 1.458 1.195 1.458 1.433 0 2.535-1.511 2.535-3.69 0-1.929-1.386-3.277-3.367-3.277-2.293 0-3.64 1.72-3.64 3.497 0 .693.267 1.435.6 1.838a.24.24 0 01.056.231c-.061.256-.198.803-.225.915-.035.146-.116.177-.268.107-1.001-.466-1.627-1.929-1.627-3.104 0-2.527 1.836-4.847 5.293-4.847 2.779 0 4.938 1.98 4.938 4.625 0 2.761-1.74 4.984-4.154 4.984-.812 0-1.575-.422-1.836-.92l-.5 1.903c-.18.696-.668 1.57-.995 2.1A12 12 0 1012 0z"/>
+                </svg>
+            ),
+            Mail: () => (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+            ),
+            Bookmark: () => (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/>
+                </svg>
+            ),
+            Copy: () => (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                </svg>
             )
+        };
+        
+        // ============ ELF CHARACTER COMPONENT ============
+        const ElfCharacter = ({ scene = 'waving', size = 120 }) => {
+            const scenes = {
+                waving: (
+                    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        {/* Elf body */}
+                        <ellipse cx="60" cy="95" rx="20" ry="15" fill="#8b1538"/>
+                        {/* Legs */}
+                        <rect x="48" y="95" width="8" height="20" fill="#1a3a2f"/>
+                        <rect x="64" y="95" width="8" height="20" fill="#1a3a2f"/>
+                        {/* Shoes */}
+                        <ellipse cx="52" cy="115" rx="8" ry="5" fill="#1a3a2f"/>
+                        <ellipse cx="68" cy="115" rx="8" ry="5" fill="#1a3a2f"/>
+                        {/* Torso */}
+                        <rect x="45" y="60" width="30" height="40" rx="5" fill="#8b1538"/>
+                        {/* Belt */}
+                        <rect x="45" y="85" width="30" height="6" fill="#2a2a2a"/>
+                        <rect x="57" y="83" width="6" height="10" fill="#c9a227"/>
+                        {/* Head */}
+                        <circle cx="60" cy="40" r="22" fill="#fce5d3"/>
+                        {/* Eyes */}
+                        <circle cx="52" cy="38" r="3" fill="#2a2a2a"/>
+                        <circle cx="68" cy="38" r="3" fill="#2a2a2a"/>
+                        {/* Smile */}
+                        <path d="M52 48 Q60 55 68 48" stroke="#2a2a2a" strokeWidth="2" fill="none"/>
+                        {/* Rosy cheeks */}
+                        <circle cx="48" cy="45" r="4" fill="#ffb6c1" opacity="0.6"/>
+                        <circle cx="72" cy="45" r="4" fill="#ffb6c1" opacity="0.6"/>
+                        {/* Hat */}
+                        <path d="M38 42 L60 5 L82 42 Z" fill="#1a3a2f"/>
+                        <ellipse cx="60" cy="42" rx="24" ry="6" fill="#1a3a2f"/>
+                        <circle cx="60" cy="5" r="6" fill="#ffffff"/>
+                        {/* Ears */}
+                        <ellipse cx="35" cy="40" rx="5" ry="8" fill="#fce5d3"/>
+                        <ellipse cx="85" cy="40" rx="5" ry="8" fill="#fce5d3"/>
+                        {/* Waving arm */}
+                        <g style={{animation: 'elfBounce 1s ease-in-out infinite'}}>
+                            <rect x="75" y="55" width="25" height="8" rx="4" fill="#8b1538" transform="rotate(-45 75 55)"/>
+                            <circle cx="92" cy="42" r="6" fill="#fce5d3"/>
+                        </g>
+                        {/* Other arm */}
+                        <rect x="20" y="65" width="25" height="8" rx="4" fill="#8b1538"/>
+                        <circle cx="20" cy="69" r="6" fill="#fce5d3"/>
+                    </svg>
+                ),
+                thinking: (
+                    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        {/* Same body base */}
+                        <ellipse cx="60" cy="95" rx="20" ry="15" fill="#8b1538"/>
+                        <rect x="48" y="95" width="8" height="20" fill="#1a3a2f"/>
+                        <rect x="64" y="95" width="8" height="20" fill="#1a3a2f"/>
+                        <ellipse cx="52" cy="115" rx="8" ry="5" fill="#1a3a2f"/>
+                        <ellipse cx="68" cy="115" rx="8" ry="5" fill="#1a3a2f"/>
+                        <rect x="45" y="60" width="30" height="40" rx="5" fill="#8b1538"/>
+                        <rect x="45" y="85" width="30" height="6" fill="#2a2a2a"/>
+                        <rect x="57" y="83" width="6" height="10" fill="#c9a227"/>
+                        <circle cx="60" cy="40" r="22" fill="#fce5d3"/>
+                        {/* Thinking eyes - looking up */}
+                        <circle cx="52" cy="36" r="3" fill="#2a2a2a"/>
+                        <circle cx="68" cy="36" r="3" fill="#2a2a2a"/>
+                        {/* Thinking mouth */}
+                        <ellipse cx="60" cy="50" rx="4" ry="3" fill="#2a2a2a"/>
+                        <circle cx="48" cy="45" r="4" fill="#ffb6c1" opacity="0.6"/>
+                        <circle cx="72" cy="45" r="4" fill="#ffb6c1" opacity="0.6"/>
+                        <path d="M38 42 L60 5 L82 42 Z" fill="#1a3a2f"/>
+                        <ellipse cx="60" cy="42" rx="24" ry="6" fill="#1a3a2f"/>
+                        <circle cx="60" cy="5" r="6" fill="#ffffff"/>
+                        <ellipse cx="35" cy="40" rx="5" ry="8" fill="#fce5d3"/>
+                        <ellipse cx="85" cy="40" rx="5" ry="8" fill="#fce5d3"/>
+                        {/* Hand on chin */}
+                        <rect x="70" y="45" width="20" height="8" rx="4" fill="#8b1538"/>
+                        <circle cx="72" cy="52" r="6" fill="#fce5d3"/>
+                        <rect x="20" y="65" width="25" height="8" rx="4" fill="#8b1538"/>
+                        <circle cx="20" cy="69" r="6" fill="#fce5d3"/>
+                        {/* Thought bubbles */}
+                        <circle cx="95" cy="25" r="4" fill="#c9a227" opacity="0.6"/>
+                        <circle cx="102" cy="15" r="6" fill="#c9a227" opacity="0.6"/>
+                        <circle cx="112" cy="8" r="5" fill="#c9a227" opacity="0.6"/>
+                    </svg>
+                ),
+                celebrating: (
+                    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="60" cy="95" rx="20" ry="15" fill="#8b1538"/>
+                        <rect x="48" y="95" width="8" height="20" fill="#1a3a2f"/>
+                        <rect x="64" y="95" width="8" height="20" fill="#1a3a2f"/>
+                        <ellipse cx="52" cy="115" rx="8" ry="5" fill="#1a3a2f"/>
+                        <ellipse cx="68" cy="115" rx="8" ry="5" fill="#1a3a2f"/>
+                        <rect x="45" y="60" width="30" height="40" rx="5" fill="#8b1538"/>
+                        <rect x="45" y="85" width="30" height="6" fill="#2a2a2a"/>
+                        <rect x="57" y="83" width="6" height="10" fill="#c9a227"/>
+                        <circle cx="60" cy="40" r="22" fill="#fce5d3"/>
+                        {/* Happy closed eyes */}
+                        <path d="M48 38 Q52 34 56 38" stroke="#2a2a2a" strokeWidth="2" fill="none"/>
+                        <path d="M64 38 Q68 34 72 38" stroke="#2a2a2a" strokeWidth="2" fill="none"/>
+                        {/* Big smile */}
+                        <path d="M48 46 Q60 58 72 46" stroke="#2a2a2a" strokeWidth="2" fill="none"/>
+                        <circle cx="48" cy="45" r="4" fill="#ffb6c1" opacity="0.6"/>
+                        <circle cx="72" cy="45" r="4" fill="#ffb6c1" opacity="0.6"/>
+                        <path d="M38 42 L60 5 L82 42 Z" fill="#1a3a2f"/>
+                        <ellipse cx="60" cy="42" rx="24" ry="6" fill="#1a3a2f"/>
+                        <circle cx="60" cy="5" r="6" fill="#ffffff"/>
+                        <ellipse cx="35" cy="40" rx="5" ry="8" fill="#fce5d3"/>
+                        <ellipse cx="85" cy="40" rx="5" ry="8" fill="#fce5d3"/>
+                        {/* Both arms up */}
+                        <rect x="15" y="40" width="25" height="8" rx="4" fill="#8b1538" transform="rotate(-30 15 40)"/>
+                        <circle cx="12" cy="30" r="6" fill="#fce5d3"/>
+                        <rect x="80" y="40" width="25" height="8" rx="4" fill="#8b1538" transform="rotate(30 80 40)"/>
+                        <circle cx="108" cy="30" r="6" fill="#fce5d3"/>
+                        {/* Sparkles */}
+                        <path d="M15 15 L17 20 L22 20 L18 23 L20 28 L15 25 L10 28 L12 23 L8 20 L13 20 Z" fill="#c9a227"/>
+                        <path d="M105 10 L106 13 L109 13 L107 15 L108 18 L105 16 L102 18 L103 15 L101 13 L104 13 Z" fill="#c9a227"/>
+                        <path d="M60 0 L61 3 L64 3 L62 5 L63 8 L60 6 L57 8 L58 5 L56 3 L59 3 Z" fill="#c9a227"/>
+                    </svg>
+                )
+            };
+            return scenes[scene] || scenes.waving;
         };
         
         // ============ STYLES ============
@@ -699,9 +949,9 @@
         // ============ COMPONENTS ============
         
         // Header Component
-        const Header = ({ onOpenProfiles, onOpenPricing, isPremium, usageCount }) => (
+        const Header = ({ onOpenProfiles, onOpenPricing, onOpenFavorites, isPremium, usageCount, favoritesCount }) => (
             <header style={styles.header}>
-                <div style={styles.headerInner}>
+                <div style={styles.headerInner} className="header-inner">
                     <a href="/" style={styles.logo}>
                         <span style={styles.logoIcon}><Icons.Gift /></span>
                         Elf Ideas
@@ -709,16 +959,39 @@
                     <nav style={styles.nav}>
                         <button 
                             style={styles.navButton}
+                            onClick={onOpenFavorites}
+                            title="Saved Ideas"
+                        >
+                            <Icons.Heart filled={favoritesCount > 0} />
+                            <span className="nav-button-text">Saved</span>
+                            {favoritesCount > 0 && (
+                                <span style={{
+                                    background: 'var(--cranberry)',
+                                    color: 'white',
+                                    borderRadius: '50%',
+                                    width: '18px',
+                                    height: '18px',
+                                    fontSize: '0.7rem',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                }}>
+                                    {favoritesCount}
+                                </span>
+                            )}
+                        </button>
+                        <button 
+                            style={styles.navButton}
                             onClick={onOpenProfiles}
                         >
-                            <Icons.User /> Profiles
+                            <Icons.User /> <span className="nav-button-text">Profiles</span>
                         </button>
                         {!isPremium && (
                             <button 
                                 style={{...styles.buttonGold, ...styles.buttonSmall}}
                                 onClick={onOpenPricing}
                             >
-                                <Icons.Crown /> Upgrade
+                                <Icons.Crown /> <span className="nav-button-text">Upgrade</span>
                             </button>
                         )}
                         {isPremium && (
@@ -738,39 +1011,53 @@
             
             return (
                 <section style={styles.hero}>
-                    <div className="fade-in">
-                        <span style={styles.heroTag}>
-                            <Icons.Sparkles /> AI-Powered Ideas
-                        </span>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '40px', flexWrap: 'wrap' }}>
+                        <div style={{ flex: '1', minWidth: '280px', textAlign: 'left' }}>
+                            <div className="fade-in">
+                                <span style={styles.heroTag}>
+                                    <Icons.Sparkles /> AI-Powered Ideas
+                                </span>
+                            </div>
+                            <h1 style={{...styles.heroTitle, textAlign: 'left'}} className="fade-in delay-1 hero-title">
+                                Never Run Out of<br/>
+                                <span style={styles.heroAccent}>Elf Ideas</span> Again
+                            </h1>
+                            <p style={{...styles.heroSubtitle, textAlign: 'left', margin: '0 0 30px 0'}} className="fade-in delay-2 hero-subtitle">
+                                Creative, personalized Elf on the Shelf ideas generated in seconds. 
+                                Tailored to your kids' ages, interests, and your home environment.
+                            </p>
+                            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }} className="fade-in delay-3">
+                                <button 
+                                    style={{
+                                        ...styles.buttonPrimary,
+                                        opacity: canGenerate ? 1 : 0.6,
+                                        cursor: canGenerate ? 'pointer' : 'not-allowed'
+                                    }}
+                                    className="btn-primary"
+                                    onClick={canGenerate ? onGenerate : undefined}
+                                >
+                                    <Icons.Sparkles /> Generate Ideas
+                                </button>
+                            </div>
+                            {!isPremium && (
+                                <p style={{ marginTop: '16px', fontSize: '0.9rem', color: 'var(--forest-light)' }} className="fade-in delay-4">
+                                    {remaining > 0 
+                                        ? `${remaining} free idea${remaining !== 1 ? 's' : ''} remaining today`
+                                        : 'Daily limit reached. Upgrade for unlimited ideas!'
+                                    }
+                                </p>
+                            )}
+                        </div>
+                        <div className="fade-in delay-2 elf-scene" style={{ flex: '0 0 auto' }}>
+                            <div style={{ position: 'relative' }}>
+                                <ElfCharacter scene="waving" size={180} />
+                                {/* Decorative snowflakes */}
+                                <div style={{ position: 'absolute', top: '-10px', left: '-20px', fontSize: '20px', animation: 'twinkle 2s ease-in-out infinite' }}>❄️</div>
+                                <div style={{ position: 'absolute', top: '20px', right: '-15px', fontSize: '16px', animation: 'twinkle 2s ease-in-out infinite', animationDelay: '0.5s' }}>✨</div>
+                                <div style={{ position: 'absolute', bottom: '10px', left: '-10px', fontSize: '14px', animation: 'twinkle 2s ease-in-out infinite', animationDelay: '1s' }}>⭐</div>
+                            </div>
+                        </div>
                     </div>
-                    <h1 style={styles.heroTitle} className="fade-in delay-1">
-                        Never Run Out of<br/>
-                        <span style={styles.heroAccent}>Elf Ideas</span> Again
-                    </h1>
-                    <p style={styles.heroSubtitle} className="fade-in delay-2">
-                        Creative, personalized Elf on the Shelf ideas generated in seconds. 
-                        Tailored to your kids' ages, interests, and your home environment.
-                    </p>
-                    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }} className="fade-in delay-3">
-                        <button 
-                            style={{
-                                ...styles.buttonPrimary,
-                                opacity: canGenerate ? 1 : 0.6,
-                                cursor: canGenerate ? 'pointer' : 'not-allowed'
-                            }}
-                            onClick={canGenerate ? onGenerate : undefined}
-                        >
-                            <Icons.Sparkles /> Generate Ideas
-                        </button>
-                    </div>
-                    {!isPremium && (
-                        <p style={{ marginTop: '16px', fontSize: '0.9rem', color: 'var(--forest-light)' }} className="fade-in delay-4">
-                            {remaining > 0 
-                                ? `${remaining} free idea${remaining !== 1 ? 's' : ''} remaining today`
-                                : 'Daily limit reached. Upgrade for unlimited ideas!'
-                            }
-                        </p>
-                    )}
                 </section>
             );
         };
@@ -1106,48 +1393,105 @@
         };
         
         // Idea Card Component
-        const IdeaCard = ({ idea, index, onFavorite, isFavorite }) => (
-            <div style={styles.ideaCard} className="fade-in" key={idea.id}>
-                <div style={styles.ideaNumber}>{index + 1}</div>
-                <h3 style={styles.ideaTitle}>{idea.title}</h3>
-                <p style={styles.ideaDescription}>{idea.description}</p>
-                {idea.materials && idea.materials.length > 0 && (
-                    <div style={styles.ideaMaterials}>
-                        <span style={{ fontSize: '0.85rem', color: 'var(--forest-light)', marginRight: '8px' }}>
-                            You'll need:
-                        </span>
-                        {idea.materials.map((material, i) => (
-                            <span key={i} style={styles.ideaTag}>{material}</span>
-                        ))}
+        const IdeaCard = ({ idea, index, onFavorite, isFavorite }) => {
+            const shareText = `Check out this Elf on the Shelf idea: ${idea.title}! 🎄`;
+            const shareUrl = 'https://elfontheshelfideas.ai';
+            
+            const shareToTwitter = () => {
+                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`, '_blank');
+            };
+            
+            const shareToFacebook = () => {
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareText)}`, '_blank');
+            };
+            
+            const shareToPinterest = () => {
+                window.open(`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(shareUrl)}&description=${encodeURIComponent(shareText)}`, '_blank');
+            };
+            
+            const copyToClipboard = () => {
+                navigator.clipboard.writeText(`${idea.title}\n\n${idea.description}\n\nMaterials: ${idea.materials?.join(', ')}\n\nGet more ideas at ${shareUrl}`);
+                alert('Idea copied to clipboard!');
+            };
+            
+            return (
+                <div style={styles.ideaCard} className="fade-in idea-card" key={idea.id}>
+                    <div style={styles.ideaNumber}>{index + 1}</div>
+                    <h3 style={styles.ideaTitle}>{idea.title}</h3>
+                    <p style={styles.ideaDescription}>{idea.description}</p>
+                    {idea.materials && idea.materials.length > 0 && (
+                        <div style={styles.ideaMaterials}>
+                            <span style={{ fontSize: '0.85rem', color: 'var(--forest-light)', marginRight: '8px' }}>
+                                You'll need:
+                            </span>
+                            {idea.materials.map((material, i) => (
+                                <span key={i} style={styles.ideaTag}>{material}</span>
+                            ))}
+                        </div>
+                    )}
+                    <div style={styles.ideaActions}>
+                        <button 
+                            style={{ 
+                                ...styles.navButton, 
+                                color: isFavorite ? 'var(--cranberry)' : 'var(--forest-light)'
+                            }}
+                            onClick={() => onFavorite(idea)}
+                        >
+                            <Icons.Heart filled={isFavorite} />
+                            {isFavorite ? 'Saved' : 'Save'}
+                        </button>
+                        <div style={{ display: 'flex', gap: '4px', marginLeft: 'auto' }}>
+                            <button 
+                                style={{ ...styles.navButton, padding: '8px', color: '#1DA1F2' }}
+                                onClick={shareToTwitter}
+                                title="Share on X/Twitter"
+                            >
+                                <Icons.Twitter />
+                            </button>
+                            <button 
+                                style={{ ...styles.navButton, padding: '8px', color: '#4267B2' }}
+                                onClick={shareToFacebook}
+                                title="Share on Facebook"
+                            >
+                                <Icons.Facebook />
+                            </button>
+                            <button 
+                                style={{ ...styles.navButton, padding: '8px', color: '#E60023' }}
+                                onClick={shareToPinterest}
+                                title="Share on Pinterest"
+                            >
+                                <Icons.Pinterest />
+                            </button>
+                            <button 
+                                style={{ ...styles.navButton, padding: '8px', color: 'var(--forest-light)' }}
+                                onClick={copyToClipboard}
+                                title="Copy to clipboard"
+                            >
+                                <Icons.Copy />
+                            </button>
+                        </div>
                     </div>
-                )}
-                <div style={styles.ideaActions}>
-                    <button 
-                        style={{ 
-                            ...styles.navButton, 
-                            color: isFavorite ? 'var(--cranberry)' : 'var(--forest-light)'
-                        }}
-                        onClick={() => onFavorite(idea)}
-                    >
-                        <Icons.Heart filled={isFavorite} />
-                        {isFavorite ? 'Saved' : 'Save'}
-                    </button>
                 </div>
-            </div>
-        );
+            );
+        };
         
         // Loading Component
         const Loading = () => (
-            <div style={styles.loadingDots}>
-                {[0, 1, 2].map(i => (
-                    <div 
-                        key={i} 
-                        style={{
-                            ...styles.loadingDot,
-                            animationDelay: `${i * 0.2}s`
-                        }}
-                    />
-                ))}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+                <div style={{ animation: 'elfBounce 1s ease-in-out infinite' }}>
+                    <ElfCharacter scene="thinking" size={100} />
+                </div>
+                <div style={styles.loadingDots}>
+                    {[0, 1, 2].map(i => (
+                        <div 
+                            key={i} 
+                            style={{
+                                ...styles.loadingDot,
+                                animationDelay: `${i * 0.2}s`
+                            }}
+                        />
+                    ))}
+                </div>
             </div>
         );
         
@@ -1157,7 +1501,7 @@
                 return (
                     <div style={{ ...styles.container, textAlign: 'center', padding: '60px 24px' }}>
                         <Loading />
-                        <p style={{ color: 'var(--forest-light)', marginTop: '16px' }}>
+                        <p style={{ color: 'var(--forest-light)', marginTop: '16px', fontStyle: 'italic' }}>
                             Crafting creative ideas for your elf...
                         </p>
                     </div>
@@ -1260,6 +1604,158 @@
             </div>
         );
         
+        // Email Capture Component
+        const EmailCapture = () => {
+            const [email, setEmail] = useState('');
+            const [submitted, setSubmitted] = useState(false);
+            
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                // In production, this would send to your email service (Mailchimp, ConvertKit, etc.)
+                console.log('Email submitted:', email);
+                storage.set('elfideas_email', email);
+                setSubmitted(true);
+            };
+            
+            if (submitted) {
+                return (
+                    <div style={{
+                        background: 'linear-gradient(135deg, var(--forest) 0%, var(--forest-light) 100%)',
+                        padding: '60px 24px',
+                        textAlign: 'center',
+                        color: 'var(--cream)'
+                    }}>
+                        <ElfCharacter scene="celebrating" size={100} />
+                        <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', marginTop: '20px' }}>
+                            You're on the list! 🎄
+                        </h3>
+                        <p style={{ opacity: 0.9, marginTop: '10px' }}>
+                            We'll send you the best elf ideas and holiday tips.
+                        </p>
+                    </div>
+                );
+            }
+            
+            return (
+                <div style={{
+                    background: 'linear-gradient(135deg, var(--forest) 0%, var(--forest-light) 100%)',
+                    padding: '60px 24px',
+                    textAlign: 'center'
+                }}>
+                    <div style={{ maxWidth: '500px', margin: '0 auto' }}>
+                        <Icons.Mail style={{ width: '40px', height: '40px', color: 'var(--gold)' }} />
+                        <h3 style={{ 
+                            fontFamily: 'var(--font-display)', 
+                            fontSize: '1.75rem', 
+                            color: 'var(--cream)',
+                            marginTop: '16px',
+                            marginBottom: '8px'
+                        }}>
+                            Get Daily Elf Inspiration
+                        </h3>
+                        <p style={{ color: 'var(--cream)', opacity: 0.9, marginBottom: '24px' }}>
+                            Join thousands of parents who get fresh elf ideas delivered to their inbox every morning in December.
+                        </p>
+                        <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                            <input 
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="your@email.com"
+                                required
+                                style={{
+                                    padding: '14px 20px',
+                                    borderRadius: 'var(--radius-md)',
+                                    border: 'none',
+                                    fontSize: '1rem',
+                                    width: '260px',
+                                    fontFamily: 'var(--font-body)'
+                                }}
+                            />
+                            <button 
+                                type="submit"
+                                style={{
+                                    ...styles.buttonGold,
+                                    padding: '14px 28px'
+                                }}
+                            >
+                                Subscribe Free
+                            </button>
+                        </form>
+                        <p style={{ color: 'var(--cream)', opacity: 0.6, fontSize: '0.8rem', marginTop: '12px' }}>
+                            No spam, unsubscribe anytime. 
+                        </p>
+                    </div>
+                </div>
+            );
+        };
+        
+        // Favorites View Modal
+        const FavoritesModal = ({ isOpen, onClose, favorites, onRemoveFavorite }) => {
+            if (!isOpen) return null;
+            
+            return (
+                <div style={styles.modalOverlay} onClick={onClose}>
+                    <div style={{...styles.modalContent, maxWidth: '700px'}} className="modal-content" onClick={e => e.stopPropagation()}>
+                        <button style={styles.modalClose} onClick={onClose}>
+                            <Icons.X />
+                        </button>
+                        
+                        <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', color: 'var(--forest)', marginBottom: '8px' }}>
+                            <Icons.Heart filled={true} style={{ color: 'var(--cranberry)', marginRight: '10px' }} />
+                            Saved Ideas
+                        </h2>
+                        <p style={{ color: 'var(--forest-light)', marginBottom: '24px' }}>
+                            Your favorite elf ideas in one place
+                        </p>
+                        
+                        {favorites.length === 0 ? (
+                            <div style={{ textAlign: 'center', padding: '40px 20px' }}>
+                                <ElfCharacter scene="thinking" size={80} />
+                                <p style={{ color: 'var(--forest-light)', marginTop: '16px' }}>
+                                    No saved ideas yet. Click the heart on any idea to save it!
+                                </p>
+                            </div>
+                        ) : (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxHeight: '60vh', overflowY: 'auto' }}>
+                                {favorites.map((idea, index) => (
+                                    <div key={idea.id} style={{
+                                        background: 'var(--cream)',
+                                        borderRadius: 'var(--radius-md)',
+                                        padding: '16px',
+                                        borderLeft: '4px solid var(--cranberry)'
+                                    }}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                                            <div>
+                                                <h4 style={{ fontFamily: 'var(--font-display)', color: 'var(--forest)', marginBottom: '8px' }}>
+                                                    {idea.title}
+                                                </h4>
+                                                <p style={{ fontSize: '0.9rem', color: 'var(--forest-light)', lineHeight: '1.5' }}>
+                                                    {idea.description}
+                                                </p>
+                                                {idea.materials && (
+                                                    <p style={{ fontSize: '0.8rem', color: 'var(--forest-light)', marginTop: '8px' }}>
+                                                        <strong>Materials:</strong> {idea.materials.join(', ')}
+                                                    </p>
+                                                )}
+                                            </div>
+                                            <button 
+                                                onClick={() => onRemoveFavorite(idea)}
+                                                style={{ ...styles.navButton, padding: '8px', color: 'var(--cranberry)' }}
+                                                title="Remove from favorites"
+                                            >
+                                                <Icons.X />
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+        
         // Footer
         const Footer = () => (
             <footer style={styles.footer}>
@@ -1284,6 +1780,7 @@
             
             const [showProfileModal, setShowProfileModal] = useState(false);
             const [showPricingModal, setShowPricingModal] = useState(false);
+            const [showFavoritesModal, setShowFavoritesModal] = useState(false);
             
             // Persist to localStorage
             useEffect(() => {
@@ -1477,8 +1974,10 @@
                     <Header 
                         onOpenProfiles={() => setShowProfileModal(true)}
                         onOpenPricing={() => setShowPricingModal(true)}
+                        onOpenFavorites={() => setShowFavoritesModal(true)}
                         isPremium={isPremium}
                         usageCount={usageCount}
+                        favoritesCount={favorites.length}
                     />
                     
                     <main>
@@ -1506,6 +2005,8 @@
                             favorites={favorites}
                             onFavorite={handleFavorite}
                         />
+                        
+                        <EmailCapture />
                     </main>
                     
                     <Footer />
@@ -1524,6 +2025,13 @@
                         isOpen={showPricingModal}
                         onClose={() => setShowPricingModal(false)}
                         onPurchase={handlePurchase}
+                    />
+                    
+                    <FavoritesModal 
+                        isOpen={showFavoritesModal}
+                        onClose={() => setShowFavoritesModal(false)}
+                        favorites={favorites}
+                        onRemoveFavorite={handleFavorite}
                     />
                 </>
             );
