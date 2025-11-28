@@ -911,7 +911,7 @@
             
             return (
                 <section style={styles.hero}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '40px', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '60px', flexWrap: 'wrap' }}>
                         <div style={{ flex: '1', minWidth: '280px', textAlign: 'left' }}>
                             <div className="fade-in">
                                 <span style={styles.heroTag}>
@@ -948,13 +948,21 @@
                                 </p>
                             )}
                         </div>
-                        <div className="fade-in delay-2 elf-scene" style={{ flex: '0 0 auto' }}>
-                            <div style={{ position: 'relative' }}>
-                                <ElfCharacter size={180} />
-                                {/* Decorative snowflakes */}
-                                <div style={{ position: 'absolute', top: '-10px', left: '-20px', fontSize: '20px', animation: 'twinkle 2s ease-in-out infinite' }}>❄️</div>
-                                <div style={{ position: 'absolute', top: '20px', right: '-15px', fontSize: '16px', animation: 'twinkle 2s ease-in-out infinite', animationDelay: '0.5s' }}>✨</div>
-                                <div style={{ position: 'absolute', bottom: '10px', left: '-10px', fontSize: '14px', animation: 'twinkle 2s ease-in-out infinite', animationDelay: '1s' }}>⭐</div>
+                        <div className="fade-in delay-2 elf-scene" style={{ flex: '0 0 auto', position: 'relative' }}>
+                            {/* Subtle glow behind elf */}
+                            <div style={{
+                                position: 'absolute',
+                                top: '50%',
+                                left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                width: '200px',
+                                height: '200px',
+                                background: 'radial-gradient(circle, rgba(201, 162, 39, 0.15) 0%, transparent 70%)',
+                                borderRadius: '50%',
+                                zIndex: 0
+                            }} />
+                            <div style={{ position: 'relative', zIndex: 1 }}>
+                                <ElfCharacter size={200} />
                             </div>
                         </div>
                     </div>
@@ -1436,22 +1444,31 @@
         };
         
         // Generator Panel
-        const GeneratorPanel = ({ profiles, selectedProfile, onSelectProfile, photo, onPhotoChange, isPremium, onUpgradeClick }) => (
-            <div style={{ ...styles.container, padding: '0 24px 40px' }}>
+        const GeneratorPanel = ({ profiles, selectedProfile, onSelectProfile, onOpenProfiles, photo, onPhotoChange, isPremium, onUpgradeClick }) => (
+            <div style={{ ...styles.container, padding: '0 24px 40px' }} className="section-padding">
                 <div style={{ 
                     display: 'grid', 
                     gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
                     gap: '24px',
                     maxWidth: '900px',
                     margin: '0 auto'
-                }}>
-                    {/* Profile Selection */}
-                    <div style={styles.card}>
-                        <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'var(--forest)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                            <Icons.User /> Select Child
+                }} className="generator-grid">
+                    {/* Profile Selection Card */}
+                    <div style={{
+                        ...styles.card,
+                        minHeight: '280px',
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }}>
+                        <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'var(--forest)', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <Icons.User /> Personalize Ideas
                         </h3>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--forest-light)', marginBottom: '16px', lineHeight: '1.5' }}>
+                            Add your child's profile to get elf ideas tailored to their age and interests.
+                        </p>
+                        
                         {profiles.length > 0 ? (
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
                                 {profiles.map(profile => (
                                     <div 
                                         key={profile.id}
@@ -1480,25 +1497,126 @@
                                         )}
                                     </div>
                                 ))}
+                                <button 
+                                    style={{ 
+                                        ...styles.buttonSecondary, 
+                                        marginTop: 'auto',
+                                        justifyContent: 'center',
+                                        padding: '12px 20px'
+                                    }}
+                                    onClick={onOpenProfiles}
+                                >
+                                    <Icons.Plus /> Add Another Child
+                                </button>
                             </div>
                         ) : (
-                            <p style={{ color: 'var(--forest-light)', fontSize: '0.95rem' }}>
-                                Add a child profile for personalized ideas
-                            </p>
+                            <div style={{ 
+                                flex: 1, 
+                                display: 'flex', 
+                                flexDirection: 'column', 
+                                alignItems: 'center', 
+                                justifyContent: 'center',
+                                textAlign: 'center',
+                                padding: '20px 0'
+                            }}>
+                                <div style={{ 
+                                    width: '60px', 
+                                    height: '60px', 
+                                    borderRadius: '50%', 
+                                    background: 'var(--cream)', 
+                                    display: 'flex', 
+                                    alignItems: 'center', 
+                                    justifyContent: 'center',
+                                    marginBottom: '16px',
+                                    color: 'var(--forest-light)'
+                                }}>
+                                    <Icons.User />
+                                </div>
+                                <p style={{ color: 'var(--forest-light)', fontSize: '0.9rem', marginBottom: '16px' }}>
+                                    No profiles yet
+                                </p>
+                                <button 
+                                    style={{ 
+                                        ...styles.buttonPrimary, 
+                                        padding: '12px 24px',
+                                        fontSize: '0.95rem'
+                                    }}
+                                    onClick={onOpenProfiles}
+                                >
+                                    <Icons.Plus /> Add Child Profile
+                                </button>
+                            </div>
                         )}
                     </div>
                     
-                    {/* Photo Upload */}
-                    <div style={styles.card}>
-                        <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'var(--forest)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                            <Icons.Camera /> Room Photo
-                        </h3>
-                        <PhotoUpload 
-                            photo={photo}
-                            onPhotoChange={onPhotoChange}
-                            isPremium={isPremium}
-                            onUpgradeClick={onUpgradeClick}
-                        />
+                    {/* Photo Upload Card */}
+                    <div style={{
+                        ...styles.card,
+                        minHeight: '280px',
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+                            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'var(--forest)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <Icons.Camera /> Smart Room Scan
+                            </h3>
+                            {!isPremium && (
+                                <span style={styles.premiumBadge}>
+                                    <Icons.Crown /> Premium
+                                </span>
+                            )}
+                        </div>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--forest-light)', marginBottom: '16px', lineHeight: '1.5' }}>
+                            Upload a photo of your room and our AI will suggest elf ideas using objects it sees — toys, furniture, decorations, and more!
+                        </p>
+                        
+                        <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                            {isPremium ? (
+                                <PhotoUpload 
+                                    photo={photo}
+                                    onPhotoChange={onPhotoChange}
+                                    isPremium={isPremium}
+                                    onUpgradeClick={onUpgradeClick}
+                                />
+                            ) : (
+                                <div 
+                                    style={{ 
+                                        flex: 1,
+                                        border: '2px dashed var(--cream-dark)',
+                                        borderRadius: 'var(--radius-md)',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        padding: '24px',
+                                        background: 'var(--cream)',
+                                        cursor: 'pointer',
+                                        transition: 'all 0.2s ease'
+                                    }}
+                                    onClick={onUpgradeClick}
+                                >
+                                    <div style={{ 
+                                        width: '50px', 
+                                        height: '50px', 
+                                        borderRadius: '50%', 
+                                        background: 'linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%)', 
+                                        display: 'flex', 
+                                        alignItems: 'center', 
+                                        justifyContent: 'center',
+                                        marginBottom: '12px',
+                                        color: 'var(--forest)'
+                                    }}>
+                                        <Icons.Lock />
+                                    </div>
+                                    <p style={{ fontWeight: '600', color: 'var(--forest)', marginBottom: '4px', fontSize: '0.95rem' }}>
+                                        Unlock Smart Room Scan
+                                    </p>
+                                    <p style={{ fontSize: '0.85rem', color: 'var(--forest-light)', textAlign: 'center' }}>
+                                        Upgrade to Premium for AI-powered room analysis
+                                    </p>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1892,6 +2010,7 @@
                             profiles={profiles}
                             selectedProfile={selectedProfile}
                             onSelectProfile={setSelectedProfile}
+                            onOpenProfiles={() => setShowProfileModal(true)}
                             photo={photo}
                             onPhotoChange={setPhoto}
                             isPremium={isPremium}
