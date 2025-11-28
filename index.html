@@ -426,7 +426,8 @@
             // Header
             header: {
                 padding: '20px 0',
-                borderBottom: '1px solid rgba(26, 58, 47, 0.1)'
+                borderBottom: '3px solid #1a3a2f',
+                background: 'white'
             },
             headerInner: {
                 display: 'flex',
@@ -848,30 +849,37 @@
         
         // ============ COMPONENTS ============
         
-        // Christmas Lights Component
+        // Christmas Lights Component - hangs from header border
         const ChristmasLights = () => {
             const lights = [];
             const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#ff6b6b', '#95e1d3', '#f38181', '#4ecdc4', '#ffe66d', '#95e1d3', '#f38181', '#ff6b6b', '#4ecdc4', '#ffe66d', '#95e1d3', '#f38181'];
             
             for (let i = 0; i < 15; i++) {
+                const dropLength = 12 + (i % 3) * 8; // Varying drop lengths for natural look
                 lights.push(
                     <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        {/* Wire drop from border */}
+                        <div style={{
+                            width: '2px',
+                            height: `${dropLength}px`,
+                            background: '#1a3a2f'
+                        }} />
                         {/* Bulb socket */}
                         <div style={{
                             width: '6px',
-                            height: '6px',
+                            height: '5px',
                             background: '#1a3a2f',
-                            borderRadius: '2px'
+                            borderRadius: '1px'
                         }} />
                         {/* Bulb */}
                         <div style={{
-                            width: '14px',
-                            height: '20px',
+                            width: '12px',
+                            height: '18px',
                             background: colors[i],
                             borderRadius: '50% 50% 50% 50% / 30% 30% 70% 70%',
-                            boxShadow: `0 0 10px ${colors[i]}, 0 0 15px ${colors[i]}50`,
+                            boxShadow: `0 0 8px ${colors[i]}, 0 0 12px ${colors[i]}40`,
                             animation: `twinkle ${1.5 + (i % 3) * 0.5}s ease-in-out infinite`,
-                            animationDelay: `${i * 0.2}s`
+                            animationDelay: `${i * 0.15}s`
                         }} />
                     </div>
                 );
@@ -880,39 +888,14 @@
             return (
                 <div style={{
                     width: '100%',
-                    position: 'relative',
-                    height: '45px',
-                    overflow: 'visible'
+                    display: 'flex',
+                    justifyContent: 'space-around',
+                    alignItems: 'flex-start',
+                    padding: '0 40px',
+                    marginTop: '-1px', // Connects to border
+                    height: '50px'
                 }}>
-                    {/* Wire - curved SVG */}
-                    <svg 
-                        style={{ 
-                            width: '100%', 
-                            height: '25px', 
-                            position: 'absolute',
-                            top: '0',
-                            left: '0'
-                        }} 
-                        preserveAspectRatio="none"
-                        viewBox="0 0 1500 25"
-                    >
-                        <path 
-                            d="M0,3 Q50,20 100,3 Q150,20 200,3 Q250,20 300,3 Q350,20 400,3 Q450,20 500,3 Q550,20 600,3 Q650,20 700,3 Q750,20 800,3 Q850,20 900,3 Q950,20 1000,3 Q1050,20 1100,3 Q1150,20 1200,3 Q1250,20 1300,3 Q1350,20 1400,3 Q1450,20 1500,3" 
-                            stroke="#1a3a2f" 
-                            strokeWidth="2.5" 
-                            fill="none"
-                        />
-                    </svg>
-                    {/* Bulbs */}
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'space-around',
-                        alignItems: 'flex-start',
-                        padding: '18px 30px 0 30px',
-                        position: 'relative'
-                    }}>
-                        {lights}
-                    </div>
+                    {lights}
                 </div>
             );
         };
