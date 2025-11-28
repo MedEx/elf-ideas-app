@@ -856,19 +856,20 @@
             for (let i = 0; i < 15; i++) {
                 lights.push(
                     <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        {/* Wire connection */}
+                        {/* Bulb socket */}
                         <div style={{
-                            width: '2px',
-                            height: '8px',
-                            background: '#2a5a3a'
+                            width: '6px',
+                            height: '6px',
+                            background: '#1a3a2f',
+                            borderRadius: '2px'
                         }} />
                         {/* Bulb */}
                         <div style={{
-                            width: '12px',
-                            height: '16px',
+                            width: '14px',
+                            height: '20px',
                             background: colors[i],
                             borderRadius: '50% 50% 50% 50% / 30% 30% 70% 70%',
-                            boxShadow: `0 0 8px ${colors[i]}, 0 0 12px ${colors[i]}40`,
+                            boxShadow: `0 0 10px ${colors[i]}, 0 0 15px ${colors[i]}50`,
                             animation: `twinkle ${1.5 + (i % 3) * 0.5}s ease-in-out infinite`,
                             animationDelay: `${i * 0.2}s`
                         }} />
@@ -879,24 +880,35 @@
             return (
                 <div style={{
                     width: '100%',
-                    overflow: 'hidden',
-                    background: 'linear-gradient(180deg, white 0%, var(--cream) 100%)',
-                    paddingBottom: '8px'
+                    position: 'relative',
+                    height: '45px',
+                    overflow: 'visible'
                 }}>
-                    {/* Wire */}
-                    <svg style={{ width: '100%', height: '20px', position: 'absolute' }} preserveAspectRatio="none">
+                    {/* Wire - curved SVG */}
+                    <svg 
+                        style={{ 
+                            width: '100%', 
+                            height: '25px', 
+                            position: 'absolute',
+                            top: '0',
+                            left: '0'
+                        }} 
+                        preserveAspectRatio="none"
+                        viewBox="0 0 1500 25"
+                    >
                         <path 
-                            d="M0,2 Q60,18 120,2 T240,2 T360,2 T480,2 T600,2 T720,2 T840,2 T960,2 T1080,2 T1200,2 T1320,2 T1440,2 T1560,2 T1680,2 T1800,2 T1920,2" 
-                            stroke="#2a5a3a" 
-                            strokeWidth="2" 
+                            d="M0,3 Q50,20 100,3 Q150,20 200,3 Q250,20 300,3 Q350,20 400,3 Q450,20 500,3 Q550,20 600,3 Q650,20 700,3 Q750,20 800,3 Q850,20 900,3 Q950,20 1000,3 Q1050,20 1100,3 Q1150,20 1200,3 Q1250,20 1300,3 Q1350,20 1400,3 Q1450,20 1500,3" 
+                            stroke="#1a3a2f" 
+                            strokeWidth="2.5" 
                             fill="none"
                         />
                     </svg>
+                    {/* Bulbs */}
                     <div style={{
                         display: 'flex',
                         justifyContent: 'space-around',
                         alignItems: 'flex-start',
-                        padding: '0 20px',
+                        padding: '18px 30px 0 30px',
                         position: 'relative'
                     }}>
                         {lights}
