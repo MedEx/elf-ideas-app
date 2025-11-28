@@ -1,0 +1,25 @@
+{
+  "name": "elf-ideas-ai",
+  "version": "1.0.0",
+  "description": "AI-powered Elf on the Shelf idea generator",
+  "main": "index.html",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'No build step required'",
+    "deploy": "netlify deploy --prod"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.27.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  },
+  "keywords": [
+    "elf-on-the-shelf",
+    "christmas",
+    "ai",
+    "parenting"
+  ],
+  "author": "Elf Ideas AI",
+  "license": "MIT"
+}
